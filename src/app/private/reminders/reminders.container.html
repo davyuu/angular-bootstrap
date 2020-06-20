@@ -1,0 +1,10 @@
+<h1>Reminders</h1>
+
+<ul>
+  <li *ngFor="let reminder of state.reminders">
+    <div>
+      <h2>{{ reminder.title }}</h2>
+      <p>{{ reminder.body }}</p>
+    </div>
+  </li>
+</ul>
