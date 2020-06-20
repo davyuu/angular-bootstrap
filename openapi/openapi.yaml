@@ -1,0 +1,113 @@
+openapi: 3.0.3
+info:
+  title: Reminder API
+  description: Reminder API
+  version: 1.0.0
+paths:
+  /reminders:
+    summary: Path used to retrieve all reminders.
+    description: The REST endpoint/path used to get a list of `Reminders`.
+    get:
+      tags:
+      - Reminder
+      summary: Get all Reminders
+      description: Get all Reminders
+      operationId: getReminders
+      responses:
+        200:
+          description: Successful response - returns a list of `Reminder`.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Reminder'
+        400:
+          $ref: '#/components/responses/BadRequest'
+  /reminders/{id}:
+    summary: Path used to retrieve a single reminder.
+    description: The REST endpoint/path used to get a single instance of a `Reminder`.
+    get:
+      tags:
+      - Reminder
+      summary: Get a single Reminder.
+      description: Gets a single Reminder.
+      operationId: getReminder
+      responses:
+        200:
+          description: Successful response - returns a single `Reminder`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reminder'
+        400:
+          $ref: '#/components/responses/BadRequest'
+    parameters:
+      - $ref: '#/components/parameters/ReminderId'
+components:
+  schemas:
+    Reminder:
+      title: Root Type for Reminder
+      description: The root of the Reminder type's schema
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          format: int32
+          description: unique id of the reminder
+          type: integer
+        createdDate:
+          format: date-time
+          description: Date reminder was added
+          type: string
+        modifiedDate:
+          format: date-time
+          description: Date reminder was modified
+          type: string
+        title:
+          type: string
+        body:
+          type: string
+    ErrorObject:
+      title: Root Type for ErrorObject
+      description: The root of the ErrorObject type's schema.
+      required:
+      - code
+      type: object
+      properties:
+        id:
+          description: Unique identifier for this incident
+          type: string
+        code:
+          description: The application error code
+          type: string
+        message:
+          description: Error message
+          type: string
+    ErrorResponse:
+      title: Root Type for ErrorResponse
+      description: Generic error response object
+      required:
+      - errors
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ErrorObject'
+  parameters:
+    ReminderId:
+      name: id
+      in: path
+      description: Unique identifier of a reminder.
+      required: true
+      schema:
+        type: integer
+  responses:
+    BadRequest:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
