@@ -24,7 +24,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.store.select(REMINDER_SELECTORS.items)
         .subscribe(reminders => this.state.model.reminders = reminders)
-    )
+    );
   }
 
   ngOnInit() {

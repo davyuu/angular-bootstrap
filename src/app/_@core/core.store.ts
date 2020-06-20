@@ -7,25 +7,25 @@ import { MODULE_NAME, ReminderEffects, ReminderReducers } from './reminder';
 
 
 @NgModule({
-    imports: [
-        StoreModule.forRoot({
-            [MODULE_NAME]: ReminderReducers
-        }),
-        EffectsModule.forRoot([
-            ReminderEffects
-        ]),
-    ],
-    declarations: [],
-    exports: [],
-    providers: []
+  imports: [
+    StoreModule.forRoot({
+      [MODULE_NAME]: ReminderReducers
+    }),
+    EffectsModule.forRoot([
+      ReminderEffects
+    ]),
+  ],
+  declarations: [],
+  exports: [],
+  providers: []
 })
 export class CoreStoreModule {
 
-    static forRoot(): ModuleWithProviders {
-        return {
-            ngModule: CoreStoreModule,
-            providers: []
-        };
-    }
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: CoreStoreModule,
+      providers: []
+    };
+  }
 
 }

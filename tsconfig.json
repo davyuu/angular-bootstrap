@@ -1,7 +1,11 @@
 {
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  },
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "outDir": "./dist",
     "sourceMap": true,
     "declaration": false,
@@ -11,21 +15,13 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom"],
     "paths": {
-        "_@environment": [ "environments/environment" ],
-        "_@api/*": [ "app/_@api/*" ],
-        "_@core/*": [ "app/_@core/*" ],
+      "_@environment": ["./src/environments/environment"],
+      "_@api/*": ["./src/app/_@api/*"],
+      "_@core/*": ["./src/app/_@core/*"],
+      "_@shared/*": ["./src/app/_@shared/*"]
     }
-  },
-  "angularCompilerOptions": {
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
   }
 }
