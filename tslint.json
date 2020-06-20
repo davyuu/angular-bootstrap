@@ -25,6 +25,7 @@
       true,
       "rxjs/Rx"
     ],
+    "indent": [true, "spaces", 4],
     "interface-name": false,
     "max-classes-per-file": false,
     "max-line-length": [
@@ -66,7 +67,21 @@
       "as-needed"
     ],
     "object-literal-sort-keys": false,
-    "ordered-imports": false,
+    "ordered-imports": {
+        "options": {
+            "import-sources-order": "case-insensitive-legacy",
+            "module-source-path": "full",
+            "named-imports-order": "case-insensitive-legacy",
+            "grouped-imports": true,
+            "groups": [
+                { "name": "@angular", "match": "^@angular", "order": 10 },
+                { "name": "_@ modules", "match": "^_@.*", "order": 20 },
+                { "name": "parent directories", "match": "^\\.\\.", "order": 20 },
+                { "name": "current directory", "match": "^\\.", "order": 20 },
+                { "name": "libraries", "match": ".*", "order": 10 }
+            ]
+        }
+    },
     "quotemark": [
       true,
       "single"

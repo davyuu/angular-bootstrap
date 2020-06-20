@@ -1,8 +1,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
+    "baseUrl": "./src",
+    "outDir": "./dist",
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
@@ -17,7 +17,12 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+        "_@environment": [ "environments/environment" ],
+        "_@api/*": [ "app/_@api/*" ],
+        "_@core/*": [ "app/_@core/*" ],
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
