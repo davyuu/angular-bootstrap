@@ -4,18 +4,6 @@ import { Subscription } from 'rxjs';
 
 import { REMINDER_ACTIONS, REMINDER_SELECTORS } from '_@core/reminder';
 
-const REMINDERS_MOCK = [
-  {
-    id: 1,
-    title: 'reminder 1',
-    body: 'body 1'
-  }, {
-    id: 2,
-    title: 'reminder 2',
-    body: 'body 2'
-  }
-];
-
 @Component({
   templateUrl: './reminders.container.html',
   styleUrls: ['./reminders.container.css']
@@ -31,8 +19,7 @@ export class RemindersContainer implements OnInit, OnDestroy {
   ) {
     this.subscription.add(
       this.store.select(REMINDER_SELECTORS.items)
-        .subscribe(reminders => this.state.reminders = REMINDERS_MOCK)
-        // .subscribe(reminders => this.state.reminders = reminders)
+        .subscribe(reminders => this.state.reminders = reminders)
     );
   }
 

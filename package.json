@@ -4,6 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start:mocked": "ng serve --proxy-config ./proxy/proxy-mock.config.js",
+    "start:server": "cd mock && npm start",
+    "start:mocked:server": "concurrently \"npm run start:mocked\" \"npm run start:server\"",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -36,6 +39,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
+    "concurrently": "^5.2.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
