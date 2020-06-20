@@ -1,6 +1,6 @@
 export const APP_ROUTES = [
 
-    { path: '', redirectTo: 'public', pathMatch: 'full' },
+    { path: '', redirectTo: 'private', pathMatch: 'full' },
 
     { path: 'private', loadChildren: () => import('./private/private.module').then((m) => m.PrivateModule) },
 

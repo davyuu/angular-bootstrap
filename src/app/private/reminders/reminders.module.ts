@@ -2,17 +2,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { SharedModule } from '_@shared/shared.module';
-import { PublicContainer } from './public.container';
-import { PUBLIC_ROUTES } from './public.routes';
+import { RemindersContainer } from './reminders.container';
+import { REMINDERS_ROUTES } from './reminders.routes';
 
 @NgModule({
   imports: [
     SharedModule,
-    RouterModule.forChild(PUBLIC_ROUTES),
+    RouterModule.forChild(REMINDERS_ROUTES),
   ],
   declarations: [
-    PublicContainer,
+    RemindersContainer,
   ],
   providers: [],
 })
-export class PublicModule { }
+export class RemindersModule { }

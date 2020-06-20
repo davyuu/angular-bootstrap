@@ -8,13 +8,13 @@ export const PRIVATE_ROUTES = [
   {
     path: '', component: PrivateContainer,
     // canActivate: [ AuthenticatedGuard ],
-    // children: [
+    children: [
 
-    //   // { path: 'reminder', loadChildren: () => import('./reminder/reminder.module').then((m) => m.ReminderModule) },
+      { path: 'reminders', loadChildren: () => import('./reminders/reminders.module').then((m) => m.RemindersModule) },
 
-    //   { path: '', redirectTo: 'reminder', pathMatch: 'full' },
+      { path: '', redirectTo: 'reminders', pathMatch: 'full' },
 
-    // ]
+    ]
   }
 
 ];

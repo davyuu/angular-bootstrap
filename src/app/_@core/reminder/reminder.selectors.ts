@@ -12,12 +12,12 @@ const selectModule = (state: AppState): State => state[MODULE_NAME];
 export const REMINDER_SELECTORS = {
   items: createSelector(
     selectModule,
-    (state: State) => state.items
+    (state: State) => state.items || []
   ),
 
   item: createSelector(
     selectModule,
-    (state: State, id: string) => state.items.find[id]
+    (state: State, id: number) => (state.items || []).find(item => item.id === id)
   ),
 
   status: createSelector(

@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { APIModule } from '_@api/api.module';
 import { CoreModule } from '_@core/core.module';
+import { SharedModule } from '_@shared/shared.module';
 import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.routes';
 
@@ -16,6 +17,7 @@ import { APP_ROUTES } from './app.routes';
     BrowserModule,
     HttpClientModule,
     APIModule,
+    SharedModule,
     CoreModule.forRoot(),
     RouterModule.forRoot(APP_ROUTES)
   ],
