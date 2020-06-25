@@ -3,6 +3,7 @@ import { Configuration } from './configuration';
 import { HttpClient } from '@angular/common/http';
 
 
+import { AuthService } from './api/auth.service';
 import { ReminderService } from './api/reminder.service';
 
 @NgModule({
