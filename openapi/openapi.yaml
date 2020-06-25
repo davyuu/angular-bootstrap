@@ -6,7 +6,6 @@ info:
 paths:
   /reminders:
     summary: Path used to retrieve all reminders.
-    description: The REST endpoint/path used to get a list of `Reminders`.
     get:
       tags:
       - Reminder
@@ -26,7 +25,8 @@ paths:
           $ref: '#/components/responses/BadRequest'
   /reminders/{id}:
     summary: Path used to retrieve a single reminder.
-    description: The REST endpoint/path used to get a single instance of a `Reminder`.
+    parameters:
+      - $ref: '#/components/parameters/ReminderId'
     get:
       tags:
       - Reminder
@@ -42,8 +42,63 @@ paths:
                 $ref: '#/components/schemas/Reminder'
         400:
           $ref: '#/components/responses/BadRequest'
-    parameters:
-      - $ref: '#/components/parameters/ReminderId'
+  /auth/currentUser:
+    summary: Path used to get currently logged in user.
+    get:
+      tags:
+      - Auth
+      summary: Request to get currently logged in user.
+      description: Request to get currently logged in user.
+      operationId: getCurrentUser
+      responses:
+        200:
+          description: Successful response - returns a single `User`.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          $ref: '#/components/responses/BadRequest'
+  /auth/login:
+    summary: Path used to login.
+    post:
+      tags:
+      - Auth
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  format: password
+                  type: string
+              required:
+                - username
+                - password
+      summary: Request to login.
+      description: Request to login.
+      operationId: login
+      responses:
+        204:
+          $ref: '#/components/responses/Success'
+        400:
+          $ref: '#/components/responses/BadRequest'
+  /auth/logout:
+    summary: Path used to logout.
+    post:
+      tags:
+      - Auth
+      summary: Request to logout.
+      description: Request to logout.
+      operationId: logout
+      responses:
+        204:
+          $ref: '#/components/responses/Success'
+        400:
+          $ref: '#/components/responses/BadRequest'
 components:
   schemas:
     Reminder:
@@ -96,6 +151,26 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ErrorObject'
+    User:
+      title: Root Type for User
+      description: The root of the User type's schema
+      required:
+      - id
+      type: object
+      properties:
+        id:
+          format: int32
+          description: unique id of the user
+          type: integer
+        username:
+          type: string
+        password:
+          format: password
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
   parameters:
     ReminderId:
       name: id
@@ -105,6 +180,8 @@ components:
       schema:
         type: integer
   responses:
+    Success:
+      description: Successful response.
     BadRequest:
       description: Bad request
       content:
